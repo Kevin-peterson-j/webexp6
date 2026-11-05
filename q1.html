@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question 1: Digital Clock</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+    #time {
+      font-size: 48px;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      color: #1a365d;
+      background-color: #e2e8f0;
+      padding: 10px 25px;
+      border-radius: 8px;
+      display: inline-block;
+      border: 2px solid #cbd5e0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Digital Clock!</h1>
+  <span id="time">00:00:00</span>
+
+  <script>
+    function display() {
+      var d = new Date();
+      var hours = d.getHours();
+      var minutes = d.getMinutes();
+      var seconds = d.getSeconds();
+
+      // Pad single digits with a leading zero (e.g., 07 instead of 7)
+      hours = hours < 10 ? "0" + hours : hours;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      var currentTime = hours + ":" + minutes + ":" + seconds;
+      document.getElementById("time").innerHTML = currentTime;
+    }
+
+    // Call display immediately so it appears without waiting 1 second
+    display();
+
+    // Call the time display function every 1000 milliseconds (1 second)
+    setInterval(display, 1000);
+  </script>
+</body>
+</html>

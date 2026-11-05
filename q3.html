@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question 3: Font Size Zoom</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 40px;
+    }
+    #para1 {
+      font-size: 16px;
+      color: #2c3e50;
+      background-color: #ecf0f1;
+      padding: 20px;
+      display: inline-block;
+      border: 1px dashed #7f8c8d;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: font-size 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Change Font Size!</h1>
+
+  <p id="para1" onmouseover="incSize()" onmouseout="decSize()">
+    Move cursor over me to zoom in...
+  </p>
+
+  <script>
+    // Increase font size on mouse hover
+    function incSize() {
+      document.getElementById("para1").style.fontSize = "28px";
+      document.getElementById("para1").style.color = "#c0392b";
+    }
+
+    // Decrease font size back to normal when mouse leaves
+    function decSize() {
+      document.getElementById("para1").style.fontSize = "16px";
+      document.getElementById("para1").style.color = "#2c3e50";
+    }
+  </script>
+</body>
+</html>

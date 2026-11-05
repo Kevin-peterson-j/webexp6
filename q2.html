@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question 2: Dynamic Background</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 60px;
+      transition: background-color 1s ease; /* Smooth transition */
+    }
+    .info-box {
+      background: rgba(255, 255, 255, 0.85);
+      display: inline-block;
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="info-box">
+    <h1>Dynamic Background!</h1>
+    <p>Background color changes dynamically using random RGB values.</p>
+    <p id="color-code">Current: rgb(255, 255, 255)</p>
+  </div>
+
+  <script>
+    function setBackgroundColor() {
+      // Create random color components from 0 to 255
+      var red = Math.floor(Math.random() * 256);
+      var green = Math.floor(Math.random() * 256);
+      var blue = Math.floor(Math.random() * 256);
+
+      var color = "rgb(" + red + "," + green + "," + blue + ")";
+
+      // Apply the background color to the body
+      document.body.style.backgroundColor = color;
+      document.getElementById("color-code").innerHTML = "Current: " + color;
+    }
+
+    // Call immediately on load
+    setBackgroundColor();
+
+    // Change background every 30 seconds (30,000 milliseconds)
+    setInterval(setBackgroundColor, 30000);
+  </script>
+</body>
+</html>

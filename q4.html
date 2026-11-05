@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question 4: Car Animation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+    .track {
+      width: 100%;
+      height: 120px;
+      border-bottom: 4px solid #333333;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+      background-color: #f7fafc;
+    }
+    #img {
+      position: absolute;
+      left: 0px;
+      bottom: 0px;
+      width: 120px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-right: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+    }
+    .btn-start { background-color: #2ecc71; color: white; }
+    .btn-stop { background-color: #e74c3c; color: white; }
+  </style>
+</head>
+<body>
+
+  <h1>Car Movement Animation</h1>
+
+  <div class="track">
+    <!-- SVG Car representation so no external file is required -->
+    <svg id="img" viewBox="0 0 100 50">
+      <path d="M10 30 Q15 15 35 15 L65 15 Q80 15 88 30 L95 30 Q98 30 98 38 L2 38 Q2 30 10 30 Z" fill="#e74c3c" />
+      <rect x="25" y="18" width="20" height="10" fill="#ecf0f1" />
+      <rect x="52" y="18" width="20" height="10" fill="#ecf0f1" />
+      <circle cx="25" cy="38" r="8" fill="#2c3e50" />
+      <circle cx="75" cy="38" r="8" fill="#2c3e50" />
+    </svg>
+  </div>
+
+  <button class="btn-start" onclick="moveRight()">Move</button>
+  <button class="btn-stop" onclick="stop()">Stop</button>
+
+  <script>
+    var imgObj = null;
+    var animate = null;
+
+    function init() {
+      imgObj = document.getElementById('img');
+      imgObj.style.position = 'absolute';
+      imgObj.style.left = '0px';
+    }
+
+    function moveRight() {
+      // Clear any prior timer to prevent speed-up bugs on multiple clicks
+      clearTimeout(animate);
+
+      imgObj.style.left = (parseInt(imgObj.style.left) || 0) + 2 + 'px';
+
+      // Keep moving by recursively invoking moveRight every 10 milliseconds
+      animate = setTimeout(moveRight, 10);
+    }
+
+    function stop() {
+      clearTimeout(animate);
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>

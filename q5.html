@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question 5: Student Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+    .student-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      padding: 12px 18px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      width: 500px;
+    }
+    .category-before {
+      color: #b91c1c;
+      font-weight: bold;
+    }
+    .category-after {
+      color: #15803d;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Student Records & Birth Categorization</h1>
+  <div id="output"></div>
+
+  <script>
+    // Create an array of student objects
+    var students = [
+      { name: "John", regno: "UR13CS129", yob: 1995 },
+      { name: "Joseph", regno: "UR13CS145", yob: 1998 },
+      { name: "Maria", regno: "UR19CS202", yob: 2002 },
+      { name: "David", regno: "UR20CS310", yob: 2000 },
+      { name: "Sarah", regno: "UR21CS415", yob: 2003 }
+    ];
+
+    var outputContainer = document.getElementById("output");
+    var htmlContent = "";
+
+    // Iterate through the array of student objects
+    for (var i = 0; i < students.length; i++) {
+      var currentStudent = students[i];
+      var category = "";
+      var categoryClass = "";
+
+      // Categorize based on year of birth (yob)
+      if (currentStudent.yob < 2000) {
+        category = "Born before 2000 (Year: " + currentStudent.yob + ")";
+        categoryClass = "category-before";
+      } else {
+        category = "Born in or after 2000 (Year: " + currentStudent.yob + ")";
+        categoryClass = "category-after";
+      }
+
+      // Generate display text
+      htmlContent += "<div class='student-card'>";
+      htmlContent += "<p><strong>" + currentStudent.name + "'s Register Number is " + currentStudent.regno + "</strong></p>";
+      htmlContent += "<p class='" + categoryClass + "'>Category: " + category + "</p>";
+      htmlContent += "</div>";
+    }
+
+    outputContainer.innerHTML = htmlContent;
+  </script>
+</body>
+</html>
