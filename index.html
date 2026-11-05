@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab Experiments Index</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0d1117;
+      color: #c9d1d9;
+      padding: 30px 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    h1 {
+      font-size: 22px;
+      color: #58a6ff;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      background-color: #238636;
+      color: #ffffff;
+    }
+
+    .nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      background-color: #21262d;
+      color: #c9d1d9;
+      border: 1px solid #30363d;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    .tab-btn:hover {
+      background-color: #30363d;
+      border-color: #58a6ff;
+    }
+
+    .tab-btn.active {
+      background-color: #1f6feb;
+      border-color: #388bfd;
+      color: #ffffff;
+    }
+
+    .preview-card {
+      background-color: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .preview-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #f0f6fc;
+    }
+
+    .open-link {
+      font-size: 12px;
+      color: #58a6ff;
+      text-decoration: none;
+    }
+
+    .open-link:hover {
+      text-decoration: underline;
+    }
+
+    iframe {
+      width: 100%;
+      height: 520px;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      background-color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div>
+        <h1>Lab Practice Worksheets</h1>
+        <p style="color: #8b949e; font-size: 13px;">JavaScript Timing Events, Objects &amp; Methods</p>
+      </div>
+      <span class="badge">Live Playground</span>
+    </header>
+
+    <!-- Navigation Tabs for q1 to q5 -->
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="loadPage('q1.html', this)">Question 1</button>
+      <button class="tab-btn" onclick="loadPage('q2.html', this)">Question 2</button>
+      <button class="tab-btn" onclick="loadPage('q3.html', this)">Question 3</button>
+      <button class="tab-btn" onclick="loadPage('q4.html', this)">Question 4</button>
+      <button class="tab-btn" onclick="loadPage('q5.html', this)">Question 5</button>
+    </div>
+
+    <!-- Live Preview Display -->
+    <div class="preview-card">
+      <div class="preview-header">
+        <span class="preview-title" id="pageLabel">Displaying: q1.html</span>
+        <a id="externalLink" href="q1.html" target="_blank" class="open-link">Open in New Tab ↗</a>
+      </div>
+      <iframe id="displayFrame" src="q1.html"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function loadPage(pageUrl, btnElement) {
+      document.getElementById('displayFrame').src = pageUrl;
+      document.getElementById('pageLabel').textContent = 'Displaying: ' + pageUrl;
+      document.getElementById('externalLink').href = pageUrl;
+
+      // Update active button styling
+      var buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(function(btn) {
+        btn.classList.remove('active');
+      });
+      btnElement.classList.add('active');
+    }
+  </script>
+</body>
+</html>
